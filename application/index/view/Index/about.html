@@ -1,0 +1,132 @@
+{extend name="index/base" /}
+{block name="title"}博客--关于我{/block}
+{block name="style"}
+	<style type="text/css">
+		.top{
+		    height: 240px;
+    		overflow: hidden;
+		}
+		img{
+			height: 300px;
+    		width: 900px;
+    	}
+    	.line{
+    		margin-top: 100px;
+    		height: 80px;
+    	}
+    	#time_axis{
+    		display: block;
+    		height: 5px;
+    		background-color: #fff;
+		    margin-left: 40px;
+    	}
+    	.line ul li{
+    		width: 18px;
+    		height: 18px;
+    		background-color: #0979b1;
+    		border: 3px solid #fff;
+    		border-radius: 50%;
+    		float: left;
+    		position: relative;
+    	}
+    	.line ul li:hover{
+    		background-color: #07618e;
+    	}
+    	.n1{
+    		margin: -10px 0px 0px 30px;
+    	}
+    	.n2{
+    		margin: -10px 0px 0px 126px;
+    	}
+    	.n3{
+    		margin: -10px 0px 0px 151px;
+    	}
+    	.n4{
+    		margin: -10px 0px 0px 186px;
+    	}
+    	.n5{
+    		margin: -10px 0px 0px 137px;
+    	}
+    	.line ul li a{
+    		display: block;
+    		width: 100px;
+    		height: 50px;
+    		color: #fff;
+    		margin-top: 20px;
+    	}
+    	.line i{
+    		font-style: normal;
+    		display: block;
+    		position: absolute;
+    		text-align: center;
+		    width: 88px;
+		    height: 45px;
+		    top: -50px;
+    		left: 6px;
+    	}
+    	.main{
+		    margin: 40px;
+    	}
+    	address p{
+		    margin: 20px 35px;
+    	}
+	</style>
+{/block}
+{block name="content"}
+	<div class="top">
+			<img src="__IMG__/banner.jpg">
+		</div>
+		<div class="line">
+			<span id="time_axis"></span>
+			<ul>
+				<li class="n1">
+					<i>
+						时间
+					</i>
+					<a href="{:url('index/particulars')}">前端入行</a>
+				</li>
+				<li class="n2">
+					<i>时间</i>
+					<a href="">创建个人博客</a>
+				</li>
+				<li class="n3">
+					<i>时间</i>
+					<a href="">分享第一个博客模板</a>
+				</li>
+				<li class="n4">
+					<i>时间</i>
+					<a href="">制作第一个html5模板</a>
+				</li>
+				<li class="n5">
+					<i>时间</i>
+					<a href="">模板更换为时间轴</a>
+				</li>
+			</ul>	
+		</div>
+		<div class="about">Just about me</div>
+		<div class="main">	
+			{volist name="info" id="vo"}
+			<p>{$vo.desc}</p>
+			{/volist}
+		</div>
+		<div class="about">About my blog</div>
+		<address>
+		  	<p>域 名：www.yangqq.com 创建于2011年01月12日</p>
+		  	<p>服务器：阿里云服务器购买空间参考我的空间配置</p>
+		  	<p>程 序：PHP 帝国CMS7.0</p>
+		</address>
+{/block}
+{block name="script"}
+	<script type="text/javascript">
+		var time_axis = document.getElementById("time_axis");
+		var length = 100 ;
+	 	var timer = setInterval(function(){
+			length += 10;
+			if(length >= 800){
+				clearInterval(timer);
+			}
+				time_axis.style.width = length+"px";
+		}
+		,10);
+	</script>
+{/block}

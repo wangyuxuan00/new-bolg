@@ -1,0 +1,154 @@
+{extend name="index/base" /}
+{block name="title"}博客--碎言碎语{/block}
+{block name="style"}
+	<style type="text/css">
+    	.nav1{
+		    margin-top: 40px;
+    	}
+    	.cont{
+            margin-top: 40px;
+    		display: block;
+    		width: 5px;
+    		min-height: 500px;
+    		background-color: #fff;
+    		margin-left: 130px;
+    	}
+    	.cont ul li{
+    		width: 18px;
+    		height: 18px;
+    		background-color: #0979b1;
+    		border: 3px solid #fff;
+    		border-radius: 50%;
+    		margin: 0px 0px 216px -46px;
+    	}
+    	.cont span{
+		    position: relative;
+    		display: block;
+            font-size: 16px;
+	    	width: 95px;
+	        height: 43px;
+            line-height: 43px;
+            text-align: center;
+	        right: 110px;
+            border-radius: 10px 0px 0px 10px;
+    	}
+    	.cont i{
+    		position: relative;
+    		display: block;
+	    	width: 1px;
+	    	border-top: 10px solid transparent;
+	    	border-right: 10px solid #3594cb;
+	    	border-bottom: 10px solid transparent;
+    	    left: -10px;
+            top: 29px;
+    	}
+    	.cont div{
+    		position: relative;
+		    width: 735px;
+			height: 198px;
+    		background-color: #3594cb;
+    		left: 39px;
+    		top: -78px;
+	        border-radius: 10px;
+    	}
+    	title{
+    		font-size: 16px;
+		    padding: 20px 10px 10px 40px;
+		    text-shadow: rgba(7, 84, 152, 0.71) 1px 1px 1px;
+		    width: 500px;
+		    display: block;
+    	}
+    	.img-rounded{
+    		width: 200px;
+    		height: 120px;
+		    margin-left: 40px;
+		    float: left;
+	        margin-right: 20px;
+    	}
+    	em{
+    		font-style: normal;
+    		margin-right: 20px;
+		    display: block;
+    	}
+    	.cont button{
+    		position: relative;
+	    	top: 29px;
+    		left: 320px;
+    	}
+    	.pagination{
+    		margin: 0 auto;
+    	}
+        .button{
+            color: #fff;
+        }
+        .cont ul li:hover>span{
+            background-color: #bdd0db;
+        }
+        .cont:after { 
+            clear:both;
+            content:'';
+            display:block;
+            width:0;
+            height:0;
+            visibility:hidden; 
+        }
+	</style>
+    <script type="text/javascript" src="__JS__/jquery.pagination.js"></script>
+    <link rel="stylesheet" href="__CSS__/pagination.css" type="text/css">
+{/block}
+{block name="css"}{/block}
+{block name="main"}
+	<div class="about">学无止境</div>
+	<div class="nav1 text-center">
+		<button type="button" class="btn btn-primary">心得笔记</button>
+		<button type="button" class="btn btn-success">css3/html5</button>
+		<button type="button" class="btn btn-info">网站建设</button>
+	</div>
+{/block}
+{block name="content"}
+    <div class="content_1">
+    	<div class="cont">
+    		<ul>
+    			{volist name="info" id="vo"}
+    				<li>
+    					<span id="bg">{$vo.created|date="y-m-d",###}</span>
+    					<div data-scroll-reveal="enter right and move 20px over 0.53s">
+                            <i></i>
+    						<title>{$vo.title}</title>
+    						<img src="{$vo.picture}" alt="..." class="img-rounded">
+    						<em>{$vo.content}</em>
+    						<button type="button" class="btn btn-primary">
+                                <a class="button" href="{:url('index/particulars',['id' => $vo['id']])}">阅读全文</a>
+                            </button>
+    					</div>
+    				</li>
+    			{/volist}
+    		</ul>
+    	</div>
+    	<div class="text-center">{$page}</div>
+        <div class="text-center">
+            当前页:{$info->currentPage()}
+            总页数:{$info->lastPage()}
+            数据总数:{$info->total()}
+        </div>
+    </div>
+{/block}
+{block name="script"}
+    <script type="text/javascript">
+        $(".nav1 button").click(function () {
+            var val = $(this).html();
+            // $.ajax({
+            //     type: "POST",
+            //     url:  "{:url('index/do')}",
+            //     data: {'key':val},
+            //     dataType: "json",
+            // //     success: function(data){
+            // //     },
+            // //     error: function(){
+            // //     },
+            // });  
+            $(".content_1").load('{:url('index/do')}',{"key" : val});
+
+        });
+    </script>
+{/block}

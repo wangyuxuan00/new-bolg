@@ -1,0 +1,36 @@
+<div class="cont">
+    <ul>
+        {volist name="data" id="vo"}
+            <li>
+                <span id="bg">{$vo.created|date="y-m-d",###}</span>
+                <div data-scroll-reveal="enter right and move 20px over 0.53s">
+                    <i></i>
+                    <title>{$vo.title}</title>
+                    <img src="{$vo.picture}" alt="..." class="img-rounded">
+                    <em>{$vo.content}</em>
+                    <button type="button" class="btn btn-primary">
+                        <a class="button" href="{:url('index/particulars',['id' => $vo['id']])}">阅读全文</a>
+                    </button>
+                </div>
+            </li>
+        {/volist}
+    </ul>
+</div>
+ <div id="pagination"></div>
+<script type="text/javascript">
+   $('#pagination').jqPaginator({
+    totalPages: 100,
+    visiblePages: 10,
+    currentPage: 1,
+
+    first: '<li class="first"><a href="javascript:void(0);">First</a></li>',
+    prev: '<li class="prev"><a href="javascript:void(0);">Previous</a></li>',
+    next: '<li class="next"><a href="javascript:void(0);">Next</a></li>',
+    last: '<li class="last"><a href="javascript:void(0);">Last</a></li>',
+    page: '<li class="page"><a href="javascript:void(0);">{{page}}</a></li>',
+    onPageChange: function (num) {
+        $('#text').html('当前第' + num + '页');
+    }
+});
+</script>
+	
