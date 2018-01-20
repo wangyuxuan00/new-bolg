@@ -1,0 +1,36 @@
+---------------------------------------------------------------
+[ 2017-12-28T14:00:22+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] wangyuxuan.online/ [运行时间：0.090000s][吞吐率：11.11req/s] [内存消耗：2,327.71kb] [文件加载：59]
+[ info ] [ LANG ] D:\phpStudy\WWW\blog\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'wangyuxuan.online',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\WWW\blog\application\index\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpStudy\WWW\blog\public/../application/index\view\index\index.html [ array (
+  0 => 'page',
+  1 => 'info',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;port=3306;dbname=blog;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `doing` [ RunTime:0.039000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `doing` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `doing` ORDER BY id desc LIMIT 0,5 [ RunTime:0.000000s ]
